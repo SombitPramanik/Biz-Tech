@@ -1,0 +1,9 @@
+services:
+  web:
+    build: .
+    container_name: ai_factory_dashboard
+    ports:
+      - "8000:5000"
+    volumes:
+      - .:/app
+    restart: unless-stopped
