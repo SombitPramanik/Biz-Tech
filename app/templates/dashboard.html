@@ -74,75 +74,84 @@
     </style>
 </head>
 
-<body class="p-6 lg:p-10 custom-scroll">
+<body class="h-screen overflow-hidden flex flex-col">
+    <div class="flex-shrink-0 bg-inherit z-40 px-6 pt-6 pb-4 border-b border-slate-800">
 
-    <nav class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
-        <div>
-            <h1 class="text-3xl font-bold tracking-tight flex items-center gap-3">
-                <span class="material-symbols-rounded text-sky-400 text-4xl">precision_manufacturing</span>
-                Productivity Dashboard <span class="text-sky-400">Biz-Tech Analytics</span>
-            </h1>
-            <p class="text-slate-400 text-sm ml-12">AI-Powered Worker Productivity Monitoring System</p>
-        </div>
 
-        <div class="relative group">
-            <span
-                class="material-symbols-rounded absolute left-3 top-2.5 text-slate-400 group-focus-within:text-sky-400 transition-colors">search</span>
-            <input id="searchBox" type="text" placeholder="Search workers or stations..."
-                class="bg-slate-800/50 border border-slate-700 pl-11 pr-4 py-2.5 rounded-full w-80 text-sm focus:border-sky-500 transition-all">
-        </div>
-    </nav>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-        <div class="glass-panel p-5 rounded-2xl flex items-center gap-4">
-            <div class="p-3 bg-sky-500/10 rounded-xl text-sky-400">
-                <span class="material-symbols-rounded">schedule</span>
-            </div>
+        <nav class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
             <div>
-                <p class="text-xs text-slate-400 uppercase tracking-wider font-bold">Active Hours</p>
-                <p class="text-2xl font-bold stat-value">{{ factory.total_active_hours }}</p>
+                <h1 class="text-3xl font-bold tracking-tight flex items-center gap-3">
+                    <span class="material-symbols-rounded text-sky-400 text-4xl">precision_manufacturing</span>
+                    Productivity Dashboard <span class="text-sky-400">Biz-Tech Analytics</span>
+                </h1>
+                <p class="text-slate-400 text-sm ml-12">AI-Powered Worker Productivity Monitoring System</p>
             </div>
-        </div>
 
-        <div class="glass-panel p-5 rounded-2xl flex items-center gap-4">
-            <div class="p-3 bg-emerald-500/10 rounded-xl text-emerald-400">
-                <span class="material-symbols-rounded">inventory_2</span>
+            <div class="relative group">
+                <span
+                    class="material-symbols-rounded absolute left-3 top-2.5 text-slate-400 group-focus-within:text-sky-400 transition-colors">search</span>
+                <input id="searchBox" type="text" placeholder="Search workers or stations..."
+                    class="bg-slate-800/50 border border-slate-700 pl-11 pr-4 py-2.5 rounded-full w-80 text-sm focus:border-sky-500 transition-all">
             </div>
-            <div>
-                <p class="text-xs text-slate-400 uppercase tracking-wider font-bold">Total Units</p>
-                <p class="text-2xl font-bold stat-value">{{ factory.total_units }}</p>
-            </div>
-        </div>
+        </nav>
 
-        <div class="glass-panel p-5 rounded-2xl flex items-center gap-4">
-            <div class="p-3 bg-amber-500/10 rounded-xl text-amber-400">
-                <span class="material-symbols-rounded">analytics</span>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+            <div class="glass-panel p-5 rounded-2xl flex items-center gap-4">
+                <div class="p-3 bg-sky-500/10 rounded-xl text-sky-400">
+                    <span class="material-symbols-rounded">schedule</span>
+                </div>
+                <div>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider font-bold">Active Hours</p>
+                    <p class="text-2xl font-bold stat-value">{{ factory.total_active_hours }}</p>
+                </div>
             </div>
-            <div>
-                <p class="text-xs text-slate-400 uppercase tracking-wider font-bold">Utilization</p>
-                <p class="text-2xl font-bold stat-value">{{ factory.avg_utilization }}%</p>
-            </div>
-        </div>
 
-        <div class="glass-panel p-5 rounded-2xl flex items-center gap-4">
-            <div class="p-3 bg-purple-500/10 rounded-xl text-purple-400">
-                <span class="material-symbols-rounded">speed</span>
+            <div class="glass-panel p-5 rounded-2xl flex items-center gap-4">
+                <div class="p-3 bg-emerald-500/10 rounded-xl text-emerald-400">
+                    <span class="material-symbols-rounded">inventory_2</span>
+                </div>
+                <div>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider font-bold">Total Units</p>
+                    <p class="text-2xl font-bold stat-value">{{ factory.total_units }}</p>
+                </div>
             </div>
-            <div>
-                <p class="text-xs text-slate-400 uppercase tracking-wider font-bold">Avg Rate</p>
-                <p class="text-2xl font-bold stat-value">{{ factory.avg_rate }}</p>
+
+            <div class="glass-panel p-5 rounded-2xl flex items-center gap-4">
+                <div class="p-3 bg-amber-500/10 rounded-xl text-amber-400">
+                    <span class="material-symbols-rounded">analytics</span>
+                </div>
+                <div>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider font-bold">Utilization</p>
+                    <p class="text-2xl font-bold stat-value">{{ factory.avg_utilization }}%</p>
+                </div>
+            </div>
+
+            <div class="glass-panel p-5 rounded-2xl flex items-center gap-4">
+                <div class="p-3 bg-purple-500/10 rounded-xl text-purple-400">
+                    <span class="material-symbols-rounded">speed</span>
+                </div>
+                <div>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider font-bold">Avg Rate</p>
+                    <p class="text-2xl font-bold stat-value">{{ factory.avg_rate }}</p>
+                </div>
             </div>
         </div>
     </div>
+    <div class="flex-1 overflow-y-auto px-6 py-6 custom-scroll">
 
-    <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
 
         <div class="xl:col-span-2">
             <div class="flex items-center justify-between mb-6">
                 <h2 class="text-xl font-bold flex items-center gap-2">
                     <span class="material-symbols-rounded text-sky-400">engineering</span> Workers
                 </h2>
-                <span class="text-xs bg-slate-800 px-3 py-1 rounded-full text-slate-400">Live Status</span>
+                <span id="healthBadge"
+                    class="text-xs bg-slate-800 px-3 py-1 rounded-full text-slate-400 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-gray-400" id="healthDot"></span>
+                    System Checking
+                </span>
+
             </div>
 
             <div id="workersGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -272,14 +281,113 @@
             filterItems(".station-item");
         });
 
-        /* AUTO REFRESH (30s) */
-        setInterval(() => {
-            // Adding a subtle refresh hint
-            console.log("Syncing with Factory API...");
-            location.reload();
-        }, 30000);
     </script>
+    <script>
+        /* ---------------------------
+           AJAX METRICS REFRESH
+        ----------------------------*/
 
+        async function refreshMetrics() {
+
+            try {
+                const workers = await fetch("/api/metrics/workers").then(r => r.json());
+                const factory = await fetch("/api/metrics/factory").then(r => r.json());
+
+                document.querySelectorAll(".stat-value")[0].innerText = factory.total_active_hours;
+                document.querySelectorAll(".stat-value")[1].innerText = factory.total_units;
+                document.querySelectorAll(".stat-value")[2].innerText = factory.avg_utilization + "%";
+                document.querySelectorAll(".stat-value")[3].innerText = factory.avg_rate;
+
+            } catch (err) {
+                console.error("Metrics refresh failed:", err);
+            }
+        }
+
+        async function checkHealth() {
+
+            try {
+                const res = await fetch("/health");
+                const data = await res.json();
+
+                const badge = document.getElementById("healthBadge");
+
+                badge.innerHTML = `
+                <span class="w-2 h-2 rounded-full bg-green-400"></span>
+                CPU ${data.cpu_usage}% | RAM ${data.ram_usage_percent}%`;
+
+            } catch (err) {
+                document.getElementById("healthBadge").innerHTML =
+                    `<span class="w-2 h-2 rounded-full bg-red-500"></span> Offline`;
+            }
+        }
+
+
+        refreshMetrics();
+        checkHealth();
+
+
+        /* ---------------------------
+           HEALTH CHECK STATUS
+        ----------------------------*/
+
+        async function checkHealth() {
+            try {
+                const res = await fetch("/health");
+                const data = await res.json();
+
+                const badge = document.getElementById("healthBadge");
+                const dot = document.getElementById("healthDot");
+
+                if (data.status === "ok") {
+                    badge.innerHTML = `<span id="healthDot" class="w-2 h-2 rounded-full bg-green-400"></span> System Healthy`;
+                } else {
+                    badge.innerHTML = `<span id="healthDot" class="w-2 h-2 rounded-full bg-yellow-400"></span> Degraded`;
+                }
+
+            } catch (err) {
+                const badge = document.getElementById("healthBadge");
+                badge.innerHTML = `<span id="healthDot" class="w-2 h-2 rounded-full bg-red-500"></span> Offline`;
+            }
+        }
+
+        /* ---------------------------
+           SCHEDULERS
+        ----------------------------*/
+
+        setInterval(refreshMetrics, 30000);
+        setInterval(checkHealth, 15000);
+
+        // Run immediately on load
+        refreshMetrics();
+        checkHealth();
+    </script>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+
+    <script>
+        const socket = io();
+
+        socket.on("live_update", data => {
+
+            // Factory cards
+            document.querySelectorAll(".stat-value")[0].innerText =
+                data.factory.total_active_hours;
+
+            document.querySelectorAll(".stat-value")[1].innerText =
+                data.factory.total_units;
+
+            document.querySelectorAll(".stat-value")[2].innerText =
+                data.factory.avg_utilization + "%";
+
+            document.querySelectorAll(".stat-value")[3].innerText =
+                data.factory.avg_rate;
+
+            // Health badge
+            document.getElementById("healthBadge").innerHTML =
+                `<span class="w-2 h-2 rounded-full bg-green-400"></span>
+     CPU ${data.health.cpu}% | RAM ${data.health.ram}%`;
+
+        });
+    </script>
 </body>
 
 </html>
