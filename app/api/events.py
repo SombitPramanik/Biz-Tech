@@ -4,6 +4,11 @@ from app.models import Worker, Workstation, Event
 from datetime import datetime, timedelta
 import random
 
+from flask import request
+import hashlib
+from dateutil import parser
+
+
 events_bp = Blueprint("events_bp", __name__)
 
 
@@ -43,3 +48,43 @@ def seed_data():
     db.session.commit()
 
     return jsonify({"message": "Database seeded successfully"})
+
+
+@events_bp.route("/events", methods=["POST"])
+def ingest_event():
+    data = request.get_json()
+
+    required = ["timestamp", "worker_id", "workstation_id", "event_type", "confidence"]
+
+    for field in required:
+        if field not in data:
+            return {"error": f"{field} is required"}, 400
+
+    worker = Worker.query.filter_by(worker_id=data["worker_id"]).first()
+    station = Workstation.query.filter_by(station_id=data["workstation_id"]).first()
+
+    if not worker or not station:
+        return {"error": "Invalid worker or workstation"}, 400
+
+    ts = parser.isoparse(data["timestamp"])
+
+    raw = f'{data["timestamp"]}{data["worker_id"]}{data["workstation_id"]}{data["event_type"]}{data.get("count",0)}'
+    event_hash = hashlib.sha256(raw.encode()).hexdigest()
+
+    if Event.query.filter_by(event_hash=event_hash).first():
+        return {"message": "Duplicate ignored"}, 200
+
+    event = Event(
+        timestamp=ts,
+        worker_id=worker.id,
+        workstation_id=station.id,
+        event_type=data["event_type"],
+        confidence=float(data["confidence"]),
+        count=int(data.get("count", 0)),
+        event_hash=event_hash,
+    )
+
+    db.session.add(event)
+    db.session.commit()
+
+    return {"message": "Event stored"}, 201
